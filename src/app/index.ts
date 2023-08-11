@@ -1,4 +1,4 @@
-import { domainMonteCarlo } from "../interfaces/monte-carlo";
+import { domainMonteCarlo, rollsMonteCarlo } from "../interfaces/monte-carlo";
 import {
   _SetIdToName,
   _DomainIdToName,
@@ -8,10 +8,12 @@ import { Artifact, MainStats, Substats } from "../interfaces/objects";
 import * as fs from "fs";
 import yargs, { Argv } from "yargs";
 import { hideBin } from "yargs/helpers";
+import chalk, { Chalk } from "chalk";
 
 // Resin Constants
 const NORMAL_RESIN_COST = 20;
 const CONDENSED_RESIN_COST = 40;
+
 
 const generateSummary = (artifacts: Artifact[], domainId: number) => {
   //initiate buffer for summary
@@ -37,6 +39,8 @@ const generateSummary = (artifacts: Artifact[], domainId: number) => {
     flag: "a",
   });
 };
+
+
 const parseFileToArtifacts = (file: string): Artifact[] => {
   const contents = fs.readFileSync(file, "utf8");
   const sections = contents
@@ -62,7 +66,7 @@ const parseFileToArtifacts = (file: string): Artifact[] => {
     let inSubstats = false;
     const substats: Partial<Record<Substats, number>> = {};
 
-    lines.forEach((line, index) => {
+    lines.forEach((line) => {
       if (line.startsWith("Type")) {
         type = line.split(": ")[1].trim();
       } else if (line.includes("(ID:")) {
@@ -104,8 +108,61 @@ const parseFileToArtifacts = (file: string): Artifact[] => {
   return artifacts;
 };
 
+const getColorFromRV = (substat: Substats, roll: number): Chalk => {
+  let index = _PossibleRolls[substat].indexOf(roll);
+  switch(index){
+    case 0: return chalk.blue;
+    case 1: return chalk.green;
+    case 2: return chalk.yellow;
+    case 3: return chalk.red;
+    default: return chalk.white;
+  }
+}
 
-const yargsSetup = (yargs: Argv) => {
+function printColorCodedArtifact(artifact: Artifact, rollHistory: { substat: Substats, roll: number }[]) {
+  console.log("===================");
+  console.log(`Artifact type: ${artifact.type}, Main Stat: ${Object.keys(artifact.mainStat)[0]} (${Object.values(artifact.mainStat)[0]})`);
+  console.log(`Artifact set: ${_SetIdToName[artifact.setId]}`); // assuming you have a function to get the set name from ID
+  
+  const substatHistories: Partial<Record<Substats, number[]>> = {};
+
+  // Create a mapping of substats to their roll histories
+  for (const entry of rollHistory) {
+    if (!substatHistories[entry.substat]) {
+      substatHistories[entry.substat] = [];
+    }
+    (substatHistories[entry.substat])!.push(entry.roll);
+  }
+
+  console.log('Substats:');
+  
+  for (const substat in artifact.substats) {
+    if (substatHistories[substat as Substats]) {
+      const total = artifact.substats[substat as Substats];
+      const history = (substatHistories[substat as Substats]!).map(roll => {
+        const color = getColorFromRV(substat as Substats, roll); // this function should return the chalk color function based on the roll value
+        return color(`+${roll}`);
+      }).join(', ');
+      console.log(`${substat}: +${total}, History: [${history}]`);
+    }
+  }
+  console.log("===================");
+}
+
+// const printColorCodedArtifact = (artifact: Artifact, rolls: number[]) => {
+//   console.log(`Artifact type: ${artifact.type}, Main Stat: ${Object.keys(artifact.mainStat)[0]}`);
+
+//   for (const substat in artifact.substats) {
+//     const rollValue = rolls.shift();
+//     const color = getColorFromRV(substat as Substats, rollValue!);
+//     console.log(color(`${substat}: ${artifact.substats[substat as Substats]}`));
+//   }
+// }
+
+
+//////////////////////////// Compiler flags with Yarg Compiler ////////////////////////////
+
+const yargsFarmSetup = (yargs: Argv) => {
   return yargs.options({
     domain: {
       type: "number",
@@ -137,7 +194,7 @@ const yargsReadCommand = (yargs: Argv) => {
 };
 
 yargs(hideBin(process.argv))
-  .command("farm", "Start the farming simulator", yargsSetup, farmSimulator)
+  .command("farm", "Start the farming simulator", yargsFarmSetup, farmSimulator)
   .command("list-domains", "List all domain IDs and names", () => {
     for (const [id, name] of Object.entries(_DomainIdToName)) {
       console.log(`ID: ${id} - Name: ${name}`);
@@ -153,8 +210,16 @@ yargs(hideBin(process.argv))
       console.log(artifacts);
     }
   )
+  .command(
+    "level-artifacts",
+    "Level up all the artifacts in the given file and write them to the console (color printed). Also write the output to a PDF",
+    yargsReadCommand,
+    processLevelCommand
+  )
   .demandCommand(1, "You must provide a command")
   .help().argv;
+
+
 
 //generate summary from list of artifacts
 
@@ -193,3 +258,24 @@ function farmSimulator(argv: any) {
     process.exit(1);
   }
 }
+
+//this is the function that reads the artifacts contained in a given file. It Levels them up, writes them to the console, and color codes the output for a PDF
+function processLevelCommand(argv: any) {
+  try {
+    const artifacts = parseFileToArtifacts(argv.file);
+    const rollSimulator = new rollsMonteCarlo(artifacts);
+    const { artifacts: leveledArtifacts, rollHistory } = rollSimulator.levelArtifacts();
+
+    leveledArtifacts.forEach((artifact, index) => {
+      const parsedRollHistory = rollHistory[index].map(entry => ({ 
+        substat: entry.substat, 
+        roll: entry.value 
+      }));
+      printColorCodedArtifact(artifact, parsedRollHistory);
+    });
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+

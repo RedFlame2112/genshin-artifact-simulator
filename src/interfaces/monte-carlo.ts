@@ -17,12 +17,6 @@ export class domainMonteCarlo {
     this.resinUsed = 0; //start off with 0 resin used.
   }
 
-  //create an array of a random number of artifacts of any type.
-  //For a single run, we are always guaranteed 1 5* artifact.
-
-  //roll a number of starting level artifacts based on which domain we are farming.
-  //If we are using condensed resin, we will guarantee 2 artifacts, with a small possibility of getting 3 or 4 artifacts.
-  //If we are not using condensed resin, we will guarantee 1 artifact with a small possibility of getting 2 artifacts.
   private static getExtraArtifactProb(): boolean {
     // There is a 0.6% chance that we will get an extra artifact. besides the one we are guaranteed
     return Math.random() < 0.006;
@@ -54,6 +48,7 @@ export class domainMonteCarlo {
     let artifactId = _DomainIdsToSetIds[domainId][index];
     //There are 5 types of mainStats, so let's choose a random index from 0 to 4.
     let typeIndex = Math.floor(Math.random() * 5);
+
     let type: string = "";
     switch (typeIndex) {
       case 0:
@@ -72,14 +67,18 @@ export class domainMonteCarlo {
         type = "sands";
         break;
     }
+
+
     let mainStat = this.getMainStat(type);
     const numStartStats = this.getStartingSubStatCount();
     let mainStatLevelValue: number = _MainStatsLevelValues[mainStat][0];
+
     let substats: Partial<Record<Substats, number>> = this.generateSubStats(
       mainStat,
       type,
       numStartStats
     );
+
     let artifactMainStat: Partial<Record<MainStats, number>> = {
       [mainStat]: mainStatLevelValue,
     };
@@ -92,6 +91,8 @@ export class domainMonteCarlo {
       numStartStats: numStartStats,
     };
   }
+
+
   private getRandomIndx = (weights: number[], results: any[]): any => {
     let num: number = Math.random(),
       s: number = 0,
@@ -104,6 +105,7 @@ export class domainMonteCarlo {
     }
     return results[lastIndex];
   };
+
 
   private getMainStat(type: string): MainStats {
     try {
@@ -134,6 +136,7 @@ export class domainMonteCarlo {
     return MainStats.HP; //just some random val for stopping the complaining TS compiler
   }
 
+
   private generateSubStats(
     mainStat: MainStats,
     type: string,
@@ -156,6 +159,8 @@ export class domainMonteCarlo {
 
     return generatedSubstats;
   }
+
+
   private selectRandomSubstat(
     substatsArray: Substats[],
     substatChances: Record<Substats, number>
@@ -176,11 +181,15 @@ export class domainMonteCarlo {
       updatedSubstatsArray: substatsArray,
     };
   }
+
+
   private getStartingSubStatCount(): number {
     const results: number[] = [3, 4];
     const weights: number[] = [0.9, 0.1];
     return this.getRandomIndx(weights, results);
   }
+
+
   private selectRandomSubstatValue(substat: Substats): number {
     const possibleValues = _PossibleRolls[substat];
     const randomValueIndex = Math.floor(Math.random() * possibleValues.length);
@@ -188,7 +197,130 @@ export class domainMonteCarlo {
   }
 }
 
-//simulator for levelling up the artifacts
-// export class rollsMonteCarlo {
+//simulator for levelling up the artifacts from a list of Artifact objects
+export class rollsMonteCarlo {
+  artifacts: Artifact[];
+  constructor(artifacts: Artifact[]) {
+      this.artifacts = artifacts;
+  }
+  //we are going to raise every artifact in the list up to level 20.
+  //
 
-// };
+
+  public levelArtifacts(): { artifacts: Artifact[]; rollHistory: Record<number, { substat: Substats; value: number }[]> } {
+    let newArtifacts: Artifact[] = [];
+    let rollHistory: Record<number, { substat: Substats; value: number }[]> = {};
+
+    for(const [index, artifact] of this.artifacts.entries()) {
+      const result = this.levelArtifact(artifact);
+      newArtifacts.push(result.artifact);
+      rollHistory[index] = result.rolls;
+    }
+
+    return {
+      artifacts: newArtifacts,
+      rollHistory: rollHistory,
+    };
+  }
+
+  
+  private levelArtifact(artifact: Artifact): { artifact: Artifact, rolls: { substat: Substats; value: number }[] } {
+    const currentSubstats = Object.keys(artifact.substats) as Substats[];
+    let rollValues: { substat: Substats; value: number }[] = [];
+    for (const substat of currentSubstats) {
+      rollValues.push({ substat: substat, value: artifact.substats[substat]! });
+    }
+    
+    let newSubstats = { ...artifact.substats };
+    let leveledRolls = 5;
+    if(artifact.numStartStats === 3){
+      const mainStat = Object.keys(artifact.mainStat)[0] as MainStats;
+      const recalculatedProbs: Partial<Record<Substats, number>> =
+        this.recalculateProbs(
+          mainStat,
+          artifact.type,
+          currentSubstats
+        );
+      const substatToAdd = this.getRandomSubstat(recalculatedProbs);
+      const rollValue = this.getRandomRoll(_PossibleRolls[substatToAdd]);
+      rollValues.push({ substat: substatToAdd, value: rollValue });
+      newSubstats[substatToAdd] = rollValue;
+      leveledRolls -= 1;
+    }
+
+    for (let i = 0; i <= leveledRolls; ++i) {
+      const substatToUpgrade = this.getRandomElement<Substats>(Object.keys(newSubstats) as Substats[]);
+      const rollValue = this.getRandomRoll(_PossibleRolls[substatToUpgrade]);
+      newSubstats[substatToUpgrade] = (newSubstats[substatToUpgrade] ?? 0) + rollValue;
+      rollValues.push({ substat: substatToUpgrade, value: rollValue });
+    }
+
+    const artifactMainStat = Object.keys(artifact.mainStat)[0] as MainStats;
+    const newMainStatValue = _MainStatsLevelValues[artifactMainStat][1]; //level 20 main stat value
+    let newMainStats: Partial<Record<MainStats, number>> = {
+      [artifactMainStat]: newMainStatValue
+    };
+    const leveledArtifact: Artifact = {
+      ...artifact,
+      mainStat: newMainStats,
+      substats: newSubstats,
+    };
+
+    return {
+      artifact: leveledArtifact,
+      rolls: rollValues,
+    };
+  }
+
+
+  private recalculateProbs(
+    mainStat: MainStats,
+    type: string,
+    rolledSubStats: Substats[]
+  ): Partial<Record<Substats, number>> {
+    const originalProbs = MainStatTypeToSubStatChances[type][mainStat];
+    const newProbs: Partial<Record<Substats, number>> = {};
+
+    let totalProbLeft = 1;
+    for(const rolledSubstat of rolledSubStats) {
+      totalProbLeft -= originalProbs[rolledSubstat];
+    }
+
+    for(const substat in originalProbs) {
+      if(!rolledSubStats.includes(substat as Substats)){
+        // Calculate the adjusted probability
+        const adjustedProb = (originalProbs[substat as Substats] / totalProbLeft) * (1 - totalProbLeft);
+        // If it doesn't exist, initialize it. Otherwise, add the adjusted probability.
+        newProbs[substat as Substats] = (newProbs[substat as Substats] || 0) + adjustedProb + originalProbs[substat as Substats];
+      }
+    }
+
+    return newProbs;
+  }
+
+
+  private getRandomSubstat(probs: Partial<Record<Substats, number>>): Substats {
+    const total = Object.values(probs).reduce((sum, prob) => sum + prob, 0);
+    const randomValue = Math.random() * total;
+    let sum = 0;
+    for (const [substat, prob] of Object.entries(probs)) {
+        sum += prob!;
+        if (randomValue <= sum) return substat as Substats;
+    }
+
+    throw new Error("Could not get a random substat.");
+  }
+
+
+  private getRandomRoll(possibleValues: number[]): number {
+    const randomIndex = Math.floor(Math.random() * possibleValues.length);
+    return possibleValues[randomIndex];
+  }
+
+
+  private getRandomElement<T>(array: T[]): T {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      return array[randomIndex];
+  }
+
+};

@@ -14,12 +14,12 @@ export interface Artifact {
 };
 
 export enum Substats {
-  HP = "hp",
-  HP_ = "hp%",
-  ATK = "atk",
-  ATK_ = "atk%",
-  DEF = "def",
-  DEF_ = "def%",
+  HP = "HP",
+  HP_ = "HP%",
+  ATK = "ATK",
+  ATK_ = "ATK%",
+  DEF = "DEF",
+  DEF_ = "DEF%",
   CDMG_ = "CRIT DMG",
   CRATE_ = "CRIT Rate",
   EM = "Elemental Mastery",
@@ -27,11 +27,11 @@ export enum Substats {
 };
 
 export enum MainStats {
-  HP = "hp",
-  HP_ = "hp%",
-  ATK = "atk",
-  ATK_ = "atk%",
-  DEF_ = "def%",
+  HP = "HP",
+  HP_ = "HP%",
+  ATK = "ATK",
+  ATK_ = "ATK%",
+  DEF_ = "DEF%",
   CDMG_ = "CRIT DMG",
   CRATE_ = "CRIT Rate",
   EM = "Elemental Mastery",

@@ -1,0 +1,84 @@
+Simulation Report for Domain: Spire of Solitary Enlightenment (Deepwood Memories and Gilded Dreams)
+
+======================================
+Artifact 1:
+Type: flower
+Set: Gilded Dreams (ID: 11.2) 
+Main Stat: HP - 717
+Substats:
+ATK%: 4.66
+DEF: 18.52
+ATK: 13.62
+======================================
+Artifact 2:
+Type: feather
+Set: Deepwood Memories (ID: 11.1) 
+Main Stat: ATK - 47
+Substats:
+CRIT Rate: 3.5
+HP%: 5.25
+ATK: 13.62
+======================================
+Simulation Report for Domain: Spire of Solitary Enlightenment (Deepwood Memories and Gilded Dreams)
+
+======================================
+Artifact 1:
+Type: feather
+Set: Deepwood Memories (ID: 11.1) 
+Main Stat: ATK - 47
+Substats:
+CRIT DMG: 5.44
+Energy Recharge: 5.83
+DEF: 18.52
+======================================
+Artifact 2:
+Type: circlet
+Set: Deepwood Memories (ID: 11.1) 
+Main Stat: Elemental Mastery - 28
+Substats:
+HP%: 5.83
+HP: 239
+ATK: 15.56
+======================================
+Simulation Report for Domain: Spire of Solitary Enlightenment (Deepwood Memories and Gilded Dreams)
+
+======================================
+Artifact 1:
+Type: feather
+Set: Gilded Dreams (ID: 11.2) 
+Main Stat: ATK - 47
+Substats:
+HP%: 5.25
+CRIT DMG: 6.99
+CRIT Rate: 2.72
+======================================
+Artifact 2:
+Type: flower
+Set: Deepwood Memories (ID: 11.1) 
+Main Stat: HP - 717
+Substats:
+Elemental Mastery: 23.31
+CRIT DMG: 5.44
+CRIT Rate: 2.72
+======================================
+Simulation Report for Domain: Spire of Solitary Enlightenment (Deepwood Memories and Gilded Dreams)
+
+======================================
+Artifact 1:
+Type: circlet
+Set: Deepwood Memories (ID: 11.1) 
+Main Stat: HP% - 7
+Substats:
+Energy Recharge: 4.53
+ATK%: 5.25
+CRIT DMG: 7.77
+======================================
+Artifact 2:
+Type: goblet
+Set: Deepwood Memories (ID: 11.1) 
+Main Stat: DEF% - 8.7
+Substats:
+HP: 209.13
+ATK%: 5.25
+ATK: 13.62
+======================================
