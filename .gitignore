@@ -1,0 +1,45 @@
+# Node modules (dependencies)
+/node_modules/
+
+# Output directory (where TypeScript compiles .js files)
+/dist/
+
+# Debug logs from npm
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Any IDE or editor folders/settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS file
+.DS_Store
+
+# TypeScript compiler output
+*.js
+*.d.ts
+*.js.map
+
+# Temporary files
+*.tmp
+*.temp
+
+# Any databases or other data files you might have
+*.sqlite
+
+# Other
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.log
+*.gz
+
+# Operating systems generated files
+ehthumbs.db
+Thumbs.db
