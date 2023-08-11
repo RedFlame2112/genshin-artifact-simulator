@@ -27,8 +27,6 @@ npm-debug.log*
 # Temporary files
 *.tmp
 *.temp
-/artifacts.txt
-/resin-data.txt
 
 # Any databases or other data files you might have
 *.sqlite
@@ -41,7 +39,11 @@ npm-debug.log*
 *.pid
 *.log
 *.gz
+*.txt
+
 
 # Operating systems generated files
 ehthumbs.db
 Thumbs.db
+
+
