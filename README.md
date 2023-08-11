@@ -33,9 +33,15 @@ Just a utility for creating a simulation for genshin artifact rolls. Right on yo
   ```
   $ npm run simulator list-domains
   ```
-- When you run the command, you should get some file with the title of the domain you just ran through as a .txt file (apologies as the name is long for now; I'll fix it in the future) and another file representing the amount of resin you have already used. Check examples for such an example when running the command
+- When you run the command, your artifact details you have gained from the run are written to your "lifetime" artifacts file (artifacts.txt) and another file representing the amount of resin you have already used is either created or updated called "resin-data.txt"; you can keep track of how much resin has globally been used already at this file, and it's written in the console output too. Check examples for such an example when running the commands
     ```
-    $ npm run simulator -- farm --domain=8 --numRuns=4 --condensed
+    $ npm run simulator -- farm --domain=8 --numRuns=5
+    $ npm run simulator -- farm --domain=11 --numRuns=3 --condensed
+    ```
+    in succession
+- You can print all of the artifacts that you currently have earned (written in the file) directly to the console as an array of Artifact objects-- partially as a functional test. Just run
+    ```
+    $ npm run simulator read-artifacts
     ```
 
 ### List of current supported domains
