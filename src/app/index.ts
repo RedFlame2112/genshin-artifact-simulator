@@ -9,6 +9,7 @@ import * as fs from "fs";
 import yargs, { Argv } from "yargs";
 import { hideBin } from "yargs/helpers";
 import chalk, { Chalk } from "chalk";
+import { exec } from "child_process";
 
 // Resin Constants
 const NORMAL_RESIN_COST = 20;
@@ -119,10 +120,16 @@ const getColorFromRV = (substat: Substats, roll: number): Chalk => {
   }
 }
 
+const logStream = fs.createWriteStream('level-output.log', { flags: 'a' });
+const outLog = (message: string) => {
+  console.log(message);
+  logStream.write(message + '\n');
+};
+
 function printColorCodedArtifact(artifact: Artifact, rollHistory: { substat: Substats, roll: number }[]) {
-  console.log("===================");
-  console.log(`Artifact type: ${artifact.type}, Main Stat: ${Object.keys(artifact.mainStat)[0]} (${Object.values(artifact.mainStat)[0]})`);
-  console.log(`Artifact set: ${_SetIdToName[artifact.setId]}`); // assuming you have a function to get the set name from ID
+  outLog("===================");
+  outLog(`Artifact type: ${artifact.type}, Main Stat: ${Object.keys(artifact.mainStat)[0]} (${Object.values(artifact.mainStat)[0]})`);
+  outLog(`Artifact set: ${_SetIdToName[artifact.setId]}`); // assuming you have a function to get the set name from ID
   
   const substatHistories: Partial<Record<Substats, number[]>> = {};
 
@@ -134,7 +141,7 @@ function printColorCodedArtifact(artifact: Artifact, rollHistory: { substat: Sub
     (substatHistories[entry.substat])!.push(entry.roll);
   }
 
-  console.log('Substats:');
+  outLog('Substats:');
   
   for (const substat in artifact.substats) {
     if (substatHistories[substat as Substats]) {
@@ -143,10 +150,10 @@ function printColorCodedArtifact(artifact: Artifact, rollHistory: { substat: Sub
         const color = getColorFromRV(substat as Substats, roll); // this function should return the chalk color function based on the roll value
         return color(`+${roll}`);
       }).join(', ');
-      console.log(`${substat}: +${total}, History: [${history}]`);
+      outLog(`${substat}: +${total}, History: [${history}]`);
     }
   }
-  console.log("===================");
+  outLog("===================");
 }
 
 // const printColorCodedArtifact = (artifact: Artifact, rolls: number[]) => {
@@ -273,6 +280,8 @@ function processLevelCommand(argv: any) {
       }));
       printColorCodedArtifact(artifact, parsedRollHistory);
     });
+    console.log("Transcript written to level-output.log");
+    //also generates an HTML file with the level-output.ans over to level-output.html
 
   } catch (err) {
     console.error(err);

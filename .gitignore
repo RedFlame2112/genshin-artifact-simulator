@@ -39,11 +39,15 @@ npm-debug.log*
 *.pid
 *.log
 *.gz
-*.txt
+*.ans
+
 
 
 # Operating systems generated files
 ehthumbs.db
 Thumbs.db
 
+# console generated files
+/artifacts.txt
+/resin-data.txt
 

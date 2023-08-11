@@ -54,6 +54,8 @@ Just a utility for creating a simulation for genshin artifact rolls. Right on yo
     - the largest roll value is colored red
 
     Thus the warmer your history looks, the better that is!!
+    All history files are currently written to a file called "level-output.log". This file contains ANSI color codes, so it might help to install the [VSCODE ANSI colors](https://marketplace.visualstudio.com/items?itemName=iliazeus.vscode-ansi) extension so you can view the colors.
+    The other option is to run `$ cat level-output.log`, although this might not show all the artifacts in the levelling history˛
 
 
 ### List of current supported domains
