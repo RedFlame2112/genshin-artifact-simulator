@@ -82,3 +82,288 @@ HP: 209.13
 ATK%: 5.25
 ATK: 13.62
 ======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: flower
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: HP - 717
+Substats:
+Energy Recharge: 5.83
+Elemental Mastery: 16.32
+CRIT DMG: 5.44
+======================================
+Artifact 2:
+Type: circlet
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: CRIT DMG - 9.3
+Substats:
+HP%: 4.66
+DEF%: 5.1
+ATK: 17.51
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: sands
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: DEF% - 8.7
+Substats:
+ATK: 17.51
+DEF: 23.15
+CRIT DMG: 6.22
+======================================
+Artifact 2:
+Type: sands
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: Energy Recharge - 7.8
+Substats:
+DEF: 16.2
+DEF%: 5.1
+Elemental Mastery: 20.98
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: goblet
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: Electro DMG Bonus - 7
+Substats:
+DEF%: 7.29
+Elemental Mastery: 18.65
+ATK: 19.45
+======================================
+Artifact 2:
+Type: circlet
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: CRIT DMG - 9.3
+Substats:
+DEF: 20.83
+CRIT Rate: 3.5
+Elemental Mastery: 16.32
+HP: 268.88
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: flower
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: HP - 717
+Substats:
+HP%: 4.08
+ATK: 13.62
+Elemental Mastery: 23.31
+======================================
+Artifact 2:
+Type: goblet
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: DEF% - 8.7
+Substats:
+HP%: 4.66
+HP: 298.75
+ATK%: 4.66
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: circlet
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: Healing Bonus - 5.4
+Substats:
+Elemental Mastery: 18.65
+ATK%: 5.83
+DEF%: 7.29
+======================================
+Artifact 2:
+Type: sands
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: DEF% - 8.7
+Substats:
+Energy Recharge: 4.53
+CRIT DMG: 7.77
+HP: 268.88
+DEF: 16.2
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: feather
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: ATK - 47
+Substats:
+ATK: 15.56
+ATK%: 5.25
+DEF: 18.52
+======================================
+Artifact 2:
+Type: sands
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: ATK% - 7
+Substats:
+HP: 268.88
+DEF%: 7.29
+Energy Recharge: 5.18
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: sands
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: Energy Recharge - 7.8
+Substats:
+ATK%: 5.83
+HP: 209.13
+Elemental Mastery: 23.31
+======================================
+Artifact 2:
+Type: feather
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: ATK - 47
+Substats:
+DEF%: 5.83
+HP%: 4.66
+CRIT DMG: 6.22
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: feather
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: ATK - 47
+Substats:
+CRIT Rate: 2.72
+CRIT DMG: 7.77
+DEF: 16.2
+======================================
+Artifact 2:
+Type: sands
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: ATK% - 7
+Substats:
+DEF: 18.52
+HP%: 4.08
+DEF%: 6.56
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: sands
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: Energy Recharge - 7.8
+Substats:
+DEF: 16.2
+Elemental Mastery: 20.98
+CRIT DMG: 6.99
+======================================
+Artifact 2:
+Type: goblet
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: Dendro DMG Bonus - 7
+Substats:
+CRIT DMG: 6.99
+ATK: 17.51
+Elemental Mastery: 16.32
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: goblet
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: ATK% - 7
+Substats:
+CRIT DMG: 5.44
+HP: 209.13
+Elemental Mastery: 18.65
+======================================
+Artifact 2:
+Type: flower
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: HP - 717
+Substats:
+ATK: 19.45
+CRIT DMG: 7.77
+ATK%: 5.25
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: flower
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: HP - 717
+Substats:
+CRIT DMG: 7.77
+CRIT Rate: 3.5
+DEF%: 7.29
+======================================
+Artifact 2:
+Type: feather
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: ATK - 47
+Substats:
+ATK: 17.51
+Elemental Mastery: 18.65
+DEF%: 5.1
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: sands
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: HP% - 7
+Substats:
+ATK: 15.56
+HP: 209.13
+CRIT Rate: 3.11
+======================================
+Artifact 2:
+Type: circlet
+Set: Shimenawa's Reminiscence (ID: 8.2) 
+Main Stat: CRIT DMG - 9.3
+Substats:
+Energy Recharge: 5.83
+DEF%: 7.29
+CRIT Rate: 3.5
+Elemental Mastery: 16.32
+======================================
+Simulation Report for Domain: Momiji-Dyed Court (Emblem of Severed Fate and Shimenawa's Reminiscence)
+
+======================================
+Artifact 1:
+Type: circlet
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: ATK% - 7
+Substats:
+Elemental Mastery: 16.32
+HP: 239
+DEF: 23.15
+======================================
+Artifact 2:
+Type: flower
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: HP - 717
+Substats:
+Energy Recharge: 5.18
+CRIT DMG: 7.77
+ATK%: 5.83
+======================================
+Artifact 3:
+Type: feather
+Set: Emblem Of Severed Fate (ID: 8.1) 
+Main Stat: ATK - 47
+Substats:
+CRIT Rate: 3.5
+DEF%: 5.83
+DEF: 16.2
+======================================

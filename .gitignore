@@ -27,8 +27,8 @@ npm-debug.log*
 # Temporary files
 *.tmp
 *.temp
-./artifacts.txt
-./resin-data.txt
+/artifacts.txt
+/resin-data.txt
 
 # Any databases or other data files you might have
 *.sqlite
