@@ -43,6 +43,17 @@ Just a utility for creating a simulation for genshin artifact rolls. Right on yo
     ```
     $ npm run simulator read-artifacts
     ```
+- To show a hypothetical run of levelling the artifacts directly to your console, just run
+    ```
+    $ npm run simulator level-artifacts
+    ```
+    This will print a color coded summary of your rolls to the console, along with the appropriate color code. There are of course 4 possible tiers of rolls in Genshin impact.
+    - The smallest roll value is colored blue
+    - the second smallest roll value is colored green
+    - the second largest roll value is colored yellow
+    - the largest roll value is colored red
+
+    Thus the warmer your history looks, the better that is! :)
 
 ### List of current supported domains
 Currently, we have these domain IDs to choose from and farm.
