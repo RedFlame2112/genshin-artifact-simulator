@@ -53,7 +53,8 @@ Just a utility for creating a simulation for genshin artifact rolls. Right on yo
     - the second largest roll value is colored yellow
     - the largest roll value is colored red
 
-    Thus the warmer your history looks, the better that is! :)
+    Thus the warmer your history looks, the better that is!!
+
 
 ### List of current supported domains
 Currently, we have these domain IDs to choose from and farm.
@@ -72,3 +73,6 @@ ID: 11 - Name: Spire of Solitary Enlightenment (Deepwood Memories and Gilded Dre
 ID: 12 - Name: City of Gold (Flower of Paradise Lost and Desert Pavilion Chronicle)
 ID: 13 - Name: Molten Iron Fortress (Nymph's Dreams and Vorukasha's Glow)
 ```
+
+### Next steps
+Planning on addding CV calculations, an artifact optimization feature, a more comprehensive history format, and more soon!
