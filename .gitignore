@@ -1,6 +1,8 @@
 # Node modules (dependencies)
 /node_modules/
 
+*.txt
+
 # Output directory (where TypeScript compiles .js files)
 /dist/
 
@@ -37,6 +39,7 @@ npm-debug.log*
 *.dat
 *.out
 *.pid
+*.txt
 *.log
 *.gz
 *.ans

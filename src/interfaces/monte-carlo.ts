@@ -105,8 +105,6 @@ export class domainMonteCarlo {
     }
     return results[lastIndex];
   };
-
-
   private getMainStat(type: string): MainStats {
     try {
       if (type === "feather") {
