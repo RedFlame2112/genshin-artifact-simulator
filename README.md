@@ -74,6 +74,7 @@ ID: 10 - Name: The Lost Valley (Vermillion Hereafter and Echoes of an Offering)
 ID: 11 - Name: Spire of Solitary Enlightenment (Deepwood Memories and Gilded Dreams)
 ID: 12 - Name: City of Gold (Flower of Paradise Lost and Desert Pavilion Chronicle)
 ID: 13 - Name: Molten Iron Fortress (Nymph's Dreams and Vorukasha's Glow)
+ID: 14 - Name: Denouement of Sin (Marechaussee Hunter and Golden Troupe)
 ```
 
 ### Next steps
